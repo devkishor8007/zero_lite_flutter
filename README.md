@@ -8,10 +8,10 @@ It's the android application; name of Zero Lite where the app provides the infor
 Zero Lite app contains Country information like Capital,Population, Area, Curreny, Flag, Language, Calling Code, 
 Region, Native Name, TimeZones, Demonym and AltSpelling, etc. 
 
-<br>
 I am getting the data from API.
 
-Zero Lite App Final Flutter
+
+## Zero Lite App Final Flutter
 
 <p float="left">
 <img src="https://user-images.githubusercontent.com/73419211/123073342-0c066400-d436-11eb-90de-dffb31a96a3e.jpg" height="500" width="260">
