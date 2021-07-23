@@ -32,14 +32,14 @@ class SearchPage extends SearchDelegate {
     ApiService apiService = ApiService();
     return FutureBuilder(
         future: apiService.getSearchList(name: query),
-        builder: (context, snapshot) {
-          List<CountryList> countrylist = snapshot.data;
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          List<CountryList>? countrylist = snapshot.data;
           if (!snapshot.hasData) return LinearProgressIndicator();
           return ListView.builder(
-              itemCount: countrylist.length,
+              itemCount: countrylist!.length,
               itemBuilder: (_, index) {
                 return ListTile(
-                  title: makeText(countrylist[index].name),
+                  title: makeText(countrylist[index].name!),
                   onTap: () {
                     Navigator.push(
                         context,
@@ -58,7 +58,7 @@ class SearchPage extends SearchDelegate {
     return Center(
       child: makeText(
         'Search Country Name',
-        size: Theme.of(context).textTheme.headline6.fontSize,
+        size: Theme.of(context).textTheme.headline6!.fontSize,
       ),
     );
   }

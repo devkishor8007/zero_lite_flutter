@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:zero_lite/data/model/countrylist_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,18 +11,18 @@ class ApiService {
     var resp = await http.get(Uri.parse(url));
 
     countryData = countryListFromJson(resp.body);
-    return countryData;
+    return countryData as FutureOr<List<CountryList>>;
   }
 
-  Future<List<CountryList>> getSearchList({String name}) async {
+  Future<List<CountryList>> getSearchList({String? name}) async {
     var resp = await http.get(Uri.parse(url));
 
     countryData = countryListFromJson(resp.body);
     if (name != null) {
       countryData = countryData
-          .where((element) => element.name.toLowerCase().contains(name))
+          .where((element) => element.name!.toLowerCase().contains(name))
           .toList();
     }
-    return countryData;
+    return countryData as FutureOr<List<CountryList>>;
   }
 }

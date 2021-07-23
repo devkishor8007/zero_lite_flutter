@@ -38,30 +38,30 @@ class CountryList {
     this.cioc,
   });
 
-  String name;
-  List<String> topLevelDomain;
-  String alpha2Code;
-  String alpha3Code;
-  List<String> callingCodes;
-  String capital;
-  List<String> altSpellings;
-  Region region;
-  String subregion;
-  int population;
-  List<double> latlng;
-  String demonym;
-  double area;
-  double gini;
-  List<String> timezones;
-  List<String> borders;
-  String nativeName;
-  String numericCode;
-  List<Currency> currencies;
-  List<Language> languages;
-  Translations translations;
-  String flag;
-  List<RegionalBloc> regionalBlocs;
-  String cioc;
+  String? name;
+  List<String>? topLevelDomain;
+  String? alpha2Code;
+  String? alpha3Code;
+  List<String>? callingCodes;
+  String? capital;
+  List<String>? altSpellings;
+  Region? region;
+  String? subregion;
+  int? population;
+  List<double>? latlng;
+  String? demonym;
+  double? area;
+  double? gini;
+  List<String>? timezones;
+  List<String>? borders;
+  String? nativeName;
+  String? numericCode;
+  List<Currency>? currencies;
+  List<Language>? languages;
+  Translations? translations;
+  String? flag;
+  List<RegionalBloc>? regionalBlocs;
+  String? cioc;
 
   factory CountryList.fromJson(Map<String, dynamic> json) => CountryList(
         name: json["name"],
@@ -95,29 +95,29 @@ class CountryList {
 
   Map<String, dynamic> toJson() => {
         "name": name,
-        "topLevelDomain": List<dynamic>.from(topLevelDomain.map((x) => x)),
+        "topLevelDomain": List<dynamic>.from(topLevelDomain!.map((x) => x)),
         "alpha2Code": alpha2Code,
         "alpha3Code": alpha3Code,
-        "callingCodes": List<dynamic>.from(callingCodes.map((x) => x)),
+        "callingCodes": List<dynamic>.from(callingCodes!.map((x) => x)),
         "capital": capital,
-        "altSpellings": List<dynamic>.from(altSpellings.map((x) => x)),
-        "region": regionValues.reverse[region],
+        "altSpellings": List<dynamic>.from(altSpellings!.map((x) => x)),
+        "region": regionValues.reverse![region!],
         "subregion": subregion,
         "population": population,
-        "latlng": List<dynamic>.from(latlng.map((x) => x)),
+        "latlng": List<dynamic>.from(latlng!.map((x) => x)),
         "demonym": demonym,
         "area": area == null ? null : area,
         "gini": gini == null ? null : gini,
-        "timezones": List<dynamic>.from(timezones.map((x) => x)),
-        "borders": List<dynamic>.from(borders.map((x) => x)),
+        "timezones": List<dynamic>.from(timezones!.map((x) => x)),
+        "borders": List<dynamic>.from(borders!.map((x) => x)),
         "nativeName": nativeName,
         "numericCode": numericCode == null ? null : numericCode,
-        "currencies": List<dynamic>.from(currencies.map((x) => x.toJson())),
-        "languages": List<dynamic>.from(languages.map((x) => x.toJson())),
-        "translations": translations.toJson(),
+        "currencies": List<dynamic>.from(currencies!.map((x) => x.toJson())),
+        "languages": List<dynamic>.from(languages!.map((x) => x.toJson())),
+        "translations": translations!.toJson(),
         "flag": flag,
         "regionalBlocs":
-            List<dynamic>.from(regionalBlocs.map((x) => x.toJson())),
+            List<dynamic>.from(regionalBlocs!.map((x) => x.toJson())),
         "cioc": cioc == null ? null : cioc,
       };
 }
@@ -129,9 +129,9 @@ class Currency {
     this.symbol,
   });
 
-  String code;
-  String name;
-  String symbol;
+  String? code;
+  String? name;
+  String? symbol;
 
   factory Currency.fromJson(Map<String, dynamic> json) => Currency(
         code: json["code"] == null ? null : json["code"],
@@ -154,10 +154,10 @@ class Language {
     this.nativeName,
   });
 
-  String iso6391;
-  String iso6392;
-  String name;
-  String nativeName;
+  String? iso6391;
+  String? iso6392;
+  String? name;
+  String? nativeName;
 
   factory Language.fromJson(Map<String, dynamic> json) => Language(
         iso6391: json["iso639_1"] == null ? null : json["iso639_1"],
@@ -194,10 +194,10 @@ class RegionalBloc {
     this.otherNames,
   });
 
-  Acronym acronym;
-  Name name;
-  List<OtherAcronym> otherAcronyms;
-  List<OtherName> otherNames;
+  Acronym? acronym;
+  Name? name;
+  List<OtherAcronym>? otherAcronyms;
+  List<OtherName>? otherNames;
 
   factory RegionalBloc.fromJson(Map<String, dynamic> json) => RegionalBloc(
         acronym: acronymValues.map[json["acronym"]],
@@ -209,12 +209,12 @@ class RegionalBloc {
       );
 
   Map<String, dynamic> toJson() => {
-        "acronym": acronymValues.reverse[acronym],
-        "name": nameValues.reverse[name],
+        "acronym": acronymValues.reverse![acronym!],
+        "name": nameValues.reverse![name!],
         "otherAcronyms": List<dynamic>.from(
-            otherAcronyms.map((x) => otherAcronymValues.reverse[x])),
+            otherAcronyms!.map((x) => otherAcronymValues.reverse![x])),
         "otherNames": List<dynamic>.from(
-            otherNames.map((x) => otherNameValues.reverse[x])),
+            otherNames!.map((x) => otherNameValues.reverse![x])),
       };
 }
 
@@ -359,16 +359,16 @@ class Translations {
     this.fa,
   });
 
-  String de;
-  String es;
-  String fr;
-  String ja;
-  String it;
-  String br;
-  String pt;
-  String nl;
-  String hr;
-  String fa;
+  String? de;
+  String? es;
+  String? fr;
+  String? ja;
+  String? it;
+  String? br;
+  String? pt;
+  String? nl;
+  String? hr;
+  String? fa;
 
   factory Translations.fromJson(Map<String, dynamic> json) => Translations(
         de: json["de"] == null ? null : json["de"],
@@ -399,11 +399,11 @@ class Translations {
 
 class EnumValues<T> {
   Map<String, T> map;
-  Map<T, String> reverseMap;
+  Map<T, String>? reverseMap;
 
   EnumValues(this.map);
 
-  Map<T, String> get reverse {
+  Map<T, String>? get reverse {
     if (reverseMap == null) {
       reverseMap = map.map((k, v) => new MapEntry(v, k));
     }

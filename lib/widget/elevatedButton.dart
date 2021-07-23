@@ -3,16 +3,16 @@ import 'makeText.dart';
 
 Widget elevatedButton(
   context, {
-  String textString,
-  Function onPressed,
-  Size minimumSize,
+  required String textString,
+  Function? onPressed,
+  Size? minimumSize,
 }) {
   return ElevatedButton(
-    onPressed: onPressed,
+    onPressed: onPressed as void Function()?,
     child: makeText(
       textString,
       color: Colors.white,
-      size: Theme.of(context).textTheme.button.fontSize,
+      size: Theme.of(context).textTheme.button!.fontSize,
     ),
     style: ElevatedButton.styleFrom(
       primary: Colors.teal,

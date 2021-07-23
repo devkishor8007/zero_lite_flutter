@@ -6,7 +6,7 @@ import 'package:zero_lite/pages/searchPage.dart';
 import 'package:zero_lite/widget/makeText.dart';
 
 class HomePage extends StatefulWidget {
-  final String title;
+  final String? title;
   HomePage({
     this.title,
   });
@@ -20,41 +20,43 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appbar(context),
+        appBar: appbar(context) as PreferredSizeWidget?,
         body: FutureBuilder(
           future: ApiService().getCountryList(),
-          builder: (context, snapshot) {
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (!snapshot.hasData) return LinearProgressIndicator();
             return ListView.builder(
               physics: BouncingScrollPhysics(),
-              itemCount: snapshot.data.length,
+              itemCount: snapshot.data!.length,
               itemBuilder: (_, index) {
                 List<CountryList> data = snapshot.data;
                 return ListTile(
                   leading: CircleAvatar(
                     backgroundColor: Colors.teal,
                     child: makeText(
-                      data[index].alpha2Code,
+                      data[index].alpha2Code!,
                       fontWeight: FontWeight.bold,
-                      size: Theme.of(context).textTheme.caption.fontSize,
+                      size: Theme.of(context).textTheme.caption!.fontSize,
                     ),
                   ),
                   title: makeText(
-                    data[index].name,
+                    data[index].name!,
                     fontWeight: FontWeight.bold,
-                    size: Theme.of(context).textTheme.subtitle1.fontSize,
+                    size: Theme.of(context).textTheme.subtitle1!.fontSize,
                   ),
                   subtitle: makeText(
-                    data[index].capital,
-                    size: Theme.of(context).textTheme.caption.fontSize,
+                    data[index].capital!,
+                    size: Theme.of(context).textTheme.caption!.fontSize,
                   ),
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => DetailPage(
-                                  countryList: data[index],
-                                )));
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => DetailPage(
+                          countryList: data[index],
+                        ),
+                      ),
+                    );
                   },
                 );
               },
@@ -70,10 +72,10 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: makeText(
-        widget.title,
+        widget.title!,
         color: Colors.indigo,
         fontWeight: FontWeight.bold,
-        size: Theme.of(context).textTheme.headline6.fontSize,
+        size: Theme.of(context).textTheme.headline6!.fontSize,
       ),
       actions: [
         IconButton(

@@ -5,14 +5,14 @@ import 'package:zero_lite/widget/elevatedButton.dart';
 import 'package:zero_lite/widget/makeText.dart';
 
 class DetailPage extends StatelessWidget {
-  final CountryList countryList;
+  final CountryList? countryList;
   DetailPage({this.countryList});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: appbar(context),
+      appBar: appbar(context) as PreferredSizeWidget?,
       body: ListView(
         physics: NeverScrollableScrollPhysics(),
         children: [
@@ -46,10 +46,10 @@ class DetailPage extends StatelessWidget {
           ),
           Center(
             child: makeText(
-              countryList.name,
+              countryList!.name!,
               fontWeight: FontWeight.bold,
               color: Colors.white,
-              size: Theme.of(context).textTheme.headline5.fontSize,
+              size: Theme.of(context).textTheme.headline5!.fontSize,
             ),
           ),
           SizedBox(
@@ -71,67 +71,67 @@ class DetailPage extends StatelessWidget {
                 children: [
                   makeChip(
                     context,
-                    labelString: countryList.capital,
+                    labelString: countryList!.capital ?? "",
                     avatarText: "C",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.nativeName,
+                    labelString: countryList!.nativeName ?? "",
                     avatarText: "N",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.callingCodes.first,
+                    labelString: countryList!.callingCodes!.first,
                     avatarText: "CC",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.population.toString(),
+                    labelString: countryList!.population.toString(),
                     avatarText: "P",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.area.toString(),
+                    labelString: countryList!.area.toString(),
                     avatarText: "A",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.region.toString(),
+                    labelString: countryList!.region.toString(),
                     avatarText: "R",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.subregion,
+                    labelString: countryList!.subregion,
                     avatarText: "SR",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.timezones.first,
+                    labelString: countryList!.timezones!.first,
                     avatarText: "T",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.languages[0].nativeName,
+                    labelString: countryList!.languages![0].nativeName,
                     avatarText: "L",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.demonym,
+                    labelString: countryList!.demonym,
                     avatarText: "D",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.altSpellings.first,
+                    labelString: countryList!.altSpellings!.first,
                     avatarText: "AS",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.currencies[0].symbol,
+                    labelString: countryList!.currencies![0].symbol,
                     avatarText: "CS",
                   ),
                   makeChip(
                     context,
-                    labelString: countryList.currencies[0].name,
+                    labelString: countryList!.currencies![0].name,
                     avatarText: "CN",
                   ),
                 ],
@@ -159,7 +159,7 @@ class DetailPage extends StatelessWidget {
       height: size.height * 0.33,
       width: size.width,
       child: SvgPicture.network(
-        countryList.flag,
+        countryList!.flag!,
         cacheColorFilter: true,
         allowDrawingOutsideViewBox: false,
         fit: BoxFit.cover,
@@ -252,10 +252,10 @@ class DetailPage extends StatelessWidget {
 
   Widget makeInfoRow(
     BuildContext context, {
-    String rowlabelOneText,
-    String rowlabelTwoText,
-    String rowOneavatarText,
-    String rowTwoavatarText,
+    String? rowlabelOneText,
+    String? rowlabelTwoText,
+    String? rowOneavatarText,
+    String? rowTwoavatarText,
   }) {
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -276,10 +276,10 @@ class DetailPage extends StatelessWidget {
   }
 
   Widget makeChip(BuildContext context,
-      {String labelString, String avatarText}) {
+      {String? labelString, String? avatarText}) {
     return Chip(
       label: makeText(labelString ?? "",
-          size: Theme.of(context).textTheme.caption.fontSize),
+          size: Theme.of(context).textTheme.caption!.fontSize),
       labelPadding: EdgeInsets.all(4),
       avatar: CircleAvatar(
         backgroundColor: Colors.grey.shade500,
@@ -287,7 +287,7 @@ class DetailPage extends StatelessWidget {
           avatarText ?? "",
           color: Colors.white,
           fontWeight: FontWeight.bold,
-          size: Theme.of(context).textTheme.button.fontSize,
+          size: Theme.of(context).textTheme.button!.fontSize,
         ),
       ),
     );

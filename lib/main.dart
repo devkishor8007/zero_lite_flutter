@@ -4,7 +4,6 @@ import 'package:zero_lite/pages/introPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,
